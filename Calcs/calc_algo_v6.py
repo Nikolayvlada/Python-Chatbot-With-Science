@@ -227,10 +227,10 @@ def process_master_file(master_file):
     
     # %%
     config['match_cat'] = master_index[master_index.get_level_values('Cat. Type')==1]\
-                             .get_level_values('Cat.').unique()
+                             .get_level_values('Category').unique()
     config['codes_list'] = master_cols[2:]
     config['adjust_cat'] = master_index[master_index.get_level_values('Cat. Type')==2]\
-                             .get_level_values('Cat.').unique()
+                             .get_level_values('Category').unique()
 
     
     # %%
@@ -268,9 +268,9 @@ def process_master_file(master_file):
     # calculate the possible highest benchmark of each code (column) each cat. (row)
     # for each feature take the maximum from all subfeatures.
     # then add up score of all features (within one category)
-    cat_maximum_score = df_mark_master.groupby(level=['Cat.', 'Feature Code'])\
+    cat_maximum_score = df_mark_master.groupby(level=['Category', 'Feature Code'])\
                         .max()\
-                        .groupby(level=['Cat.'])\
+                        .groupby(level=['Category'])\
                         .sum()
 
 
@@ -614,19 +614,19 @@ def process_case_file(case_file):
     adjust_categories = config['adjust_cat'].drop(config['age_span_cat'][0])
 
     # separate case sheet infor according to categories
-    df_cat_special_case = df_case.loc[special_categories, :].droplevel('Cat.')
+    df_cat_special_case = df_case.loc[special_categories, :].droplevel('Category')
     df_mark_case = df_case.loc[match_categories, :]
     df_adjust_case = df_case.loc[adjust_categories, :]
     
 
     # %%
     # extract the categories attempted for each cases
-    df_case_cat_attempted = df_mark_case.groupby(level=['Cat.'])\
+    df_case_cat_attempted = df_mark_case.groupby(level=['Category'])\
                                 .apply(lambda x: (pd.notnull(x)).any(axis=0))
     
     # %%
-    df_mark_case = df_mark_case.droplevel('Cat.',axis=0)
-    df_adjust_case = df_adjust_case.droplevel('Cat.',axis=0)
+    df_mark_case = df_mark_case.droplevel('Category',axis=0)
+    df_adjust_case = df_adjust_case.droplevel('Category',axis=0)
 
     # %%
     # check if the (feature, subfeature) from master sheet match with the case sheet

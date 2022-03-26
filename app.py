@@ -275,7 +275,7 @@ def writeExcel(write_data_set):
         c1= ws.cell(row=1, column=1)
         c1.value = "Sl No"
         c1= ws.cell(row=1, column=2)
-        c1.value = "Cat." 
+        c1.value = "Category" 
         c1= ws.cell(row=1, column=3)
         c1.value = "conv_num"
         c1= ws.cell(row=1, column=4)
@@ -372,6 +372,7 @@ def data_science():
     
     global aa
     aa = output_file_name
+    print("aa is ...", aa)
     output_result_to_excel(output_file_name)
 
 # data_science();

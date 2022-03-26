@@ -373,7 +373,7 @@ def data_science():
     
     global aa
     aa = output_file_name
-    print("aa is ...", aa)
+    # print("aa is ...", aa)
     output_result_to_excel(output_file_name)
 
 # data_science();

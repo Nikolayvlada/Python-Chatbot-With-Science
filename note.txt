@@ -2,6 +2,6 @@ https://newham.nimbusweb.me/s/share/6397290/g9b6gpehdcc5k5uh5dyn
 
 https://e.pcloud.com/#page=puplink&code=dTmZv8xutEwcjRmaqlm4UfBxo7snrBek    
 
-
+https://nimb.ws/rT7bOv
 
 python -m eel app.py web --onefile --noconsole --key=abcdefghijklmnop

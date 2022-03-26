@@ -103,9 +103,9 @@ function openForm() {
         document.getElementById("userAnswer").disabled = true;
 
 
-        // get_Next_Question(7);
+        get_Next_Question(7);
         // get_Next_Question(103);
-        get_First_Question();
+        // get_First_Question();
     }
 
 }
